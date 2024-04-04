@@ -3,12 +3,11 @@ import 'package:gerasenha/src/preferences/preferences_repository.dart';
 import 'package:gerasenha/src/select_difficulty/difficulty_controller.dart';
 import 'package:get_it/get_it.dart';
 
-GetIt di = GetIt.I();
+GetIt di = GetIt.instance;
 
 class Dependencies {
   // register dependecies
   resgister() {
-
     //repositories
     di.registerSingleton<PreferencesRepository>(
       PreferencesRepository(),
@@ -21,7 +20,5 @@ class Dependencies {
     di.registerSingleton<DifficultyController>(
       DifficultyController(di()),
     );
-
-    
   }
 }
