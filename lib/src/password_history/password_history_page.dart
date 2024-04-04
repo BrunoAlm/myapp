@@ -17,6 +17,7 @@ class _PasswordHistoryPageState extends State<PasswordHistoryPage> {
     super.initState();
     ct.getPasswordHistory();
     ct.addListener(() {
+      ct.getPasswordHistory();
       setState(() {});
     });
   }
@@ -42,8 +43,8 @@ class _PasswordHistoryPageState extends State<PasswordHistoryPage> {
                 final level = passwords[index].level;
                 final password = passwords[index].password;
                 return ListTile(
-                  title: Text('Nível: $level'),
-                  subtitle: Text('Senha: $password'),
+                  title: Text(level),
+                  subtitle: Text(password),
                 );
               },
             ),
