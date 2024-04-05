@@ -13,16 +13,20 @@ class PasswordGenerator extends StatelessWidget {
         title: Text(title),
       ),
       body: const SafeArea(
-        child: Center(
+        child: Padding(
+          padding: EdgeInsets.all(16),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SelectDifficultyPage(),
-              SizedBox(height: 40),
-              Flexible(
-                child: PasswordHistoryPage(),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Selecione a dificuldade:',
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
+              SelectDifficultyPage(),
+              SizedBox(height: 20),
+              Expanded(child: PasswordHistoryPage()),
             ],
           ),
         ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gerasenha/dependencies.dart';
+import 'package:gerasenha/main.dart';
 import 'package:gerasenha/src/select_difficulty/difficulty_controller.dart';
 import 'package:gerasenha/src/select_difficulty/difficulty_helper.dart';
 
@@ -15,7 +15,8 @@ class _SelectDifficultyPageState extends State<SelectDifficultyPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Wrap(
+      spacing: 30,
       children: DifficultyHelper.levels
           .map(
             (level) => Padding(
