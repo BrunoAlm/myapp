@@ -1,0 +1,35 @@
+jobs:
+  deploy_web:
+    runs-on: ubuntu-latest
+    permissions: 
+        contents: write
+    environment: secrets
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: subosito/flutter-action@v2
+        with:
+            channel: 'stable'
+
+      - name: Enable Flutter Web
+        run: flutter config --enable-web
+
+      - name: Download Dependencies
+        run: flutter pub get
+
+      - name: Build
+        run: flutter build web --base-href /gera-senha/
+
+      - name: 'Delete env file'
+        run: |
+            rm .env
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+            deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+            publish_dir: ./build/web
+            force_orphan: true
+            commit_message: 'Publish to gh-pages'
+            destination_dir: ./
