@@ -21,10 +21,6 @@ jobs:
       - name: Build
         run: flutter build web --base-href /gera-senha/
 
-      - name: 'Delete env file'
-        run: |
-            rm .env
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
