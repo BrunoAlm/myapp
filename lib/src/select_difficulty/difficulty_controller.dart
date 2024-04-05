@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gerasenha/src/helpers.dart';
 import 'package:gerasenha/src/preferences/preferences_repository.dart';
 import 'package:gerasenha/src/select_difficulty/difficulty_helper.dart';
 
@@ -16,17 +17,9 @@ class DifficultyController extends ChangeNotifier {
     );
     Clipboard.setData(ClipboardData(text: generatedPassword));
     _savePassword(level, generatedPassword);
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Senha $level copiada para a área de transferência.'),
-        duration: const Duration(seconds: 2),
-        action: SnackBarAction(
-          label: 'Fechar',
-          onPressed: () {
-            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-          },
-        ),
-      ),
+    Helpers.snackBar(
+      context,
+      'Senha $level copiada para a área de transferência.',
     );
   }
 
