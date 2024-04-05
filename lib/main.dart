@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gerasenha/dependencies.dart';
 import 'package:gerasenha/src/password_generator_page.dart';
+import 'package:get_it/get_it.dart';
 
+final di = GetIt.instance;
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  Dependencies().resgister();
+  Dependencies().register();
   runApp(const MyApp());
 }
 
